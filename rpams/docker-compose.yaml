@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    restart: always
+    command: mitmdump -p 8081 -s app.py
+    volumes:
+      - 'logs:/opt/rpams/logs:rw'
+    ports:
+      - "8081:8081"
+    networks:
+      - airflow-test-net
+
+networks:
+  airflow-test-net:
+    external: true
+
+volumes:
+  logs:
