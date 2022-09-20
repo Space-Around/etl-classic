@@ -38,10 +38,10 @@ def get_month_data(month: str, year: str):
 
     proxies = {
         'http': 'http://127.0.0.1:8081',
-        'https': 'https://127.0.0.1:8081'
+        'https': 'http://127.0.0.1:8081'
     }
 
-    cert = '/home/user/Desktop/sandbox/reef-etl-main/airflow/certs/mitmproxy-ca-cert.pem'
+    cert = '/home/maxwellviksna/.mitmrpoxy/mitmproxy-ca-cert.pem'
 
     response = requests.post('https://appointment.mfa.gr/inner.php/en/reservations/aero/calendar', headers=headers,
                              data=data, proxies=proxies, verify=cert)
@@ -86,7 +86,7 @@ def main():
             currentYear += 1
             currentMonth = 1
 
-    with open(f'/home/user/Desktop/sandbox/reef-etl-main/airflow/scrubbers/appointment.mfa.gr/{filename}.json', 'w') as f:
+    with open(f'/home/maxwellviksna/etl-classic/airflow/scrubbers/appointment.mfa.gr/{filename}.json', 'w') as f:
         json.dump(result, f)
 
 

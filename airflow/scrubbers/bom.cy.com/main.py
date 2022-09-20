@@ -8,10 +8,10 @@ url = 'https://dom.com.cy/en/catalog/sale/'
 
 # функция для получения ссылок на все карточки объектов
 
-cert = '/home/user/Desktop/sandbox/reef-etl-main/airflow/certs/mitmproxy-ca-cert.pem'
+cert = '/home/maxwellviksna/.mitmproxy/mitmproxy-ca-cert.pem'
 proxies = {
     'http': 'http://127.0.0.1:8081',
-    'https': 'https://127.0.0.1:8081'
+    'https': 'http://127.0.0.1:8081'
 }
 
 
@@ -207,7 +207,7 @@ def get_information_from_links(project_urls):
 # функция для записи в csv
 
 def write_to_csv(project_data_final):
-    with open('/home/user/Desktop/sandbox/reef-etl-main/airflow/scrubbers/bom.cy.com/data.csv', 'w') as file:
+    with open('/home/maxwellviksna/etl-classic/airflow/scrubbers/bom.cy.com/data.csv', 'w') as file:
         writer = csv.writer(file)
         writer.writerow(
             (

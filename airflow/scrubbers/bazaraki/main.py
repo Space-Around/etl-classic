@@ -48,9 +48,9 @@ else:
 BASE_URL = "https://www.bazaraki.com"
 proxies = {
     'http': 'http://127.0.0.1:8081',
-    'https': 'https://127.0.0.1:8081'
+    'https': 'http://127.0.0.1:8081'
 }
-cert = '/home/user/Desktop/sandbox/reef-etl-main/airflow/certs/mitmproxy-ca-cert.pem'
+cert = '/home/maxwellviksna/.mitmproxy/mitmproxy-ca-cert.pem'
 DEBUG = args.debug
 REPORT_PATH = os.path.join(os.getcwd(), datetime.now().strftime("%Y_%m_%d-%I_%M_%S_%p") + ".csv")
 HEADERS = {
@@ -59,10 +59,10 @@ HEADERS = {
 }
 WAIT = 20
 
-RANGE = range(1, 5)
+RANGE = range(1, 1)
 
 if args.random:
-    RANGE = random.sample(range(1, 5), 1)
+    RANGE = random.sample(range(1, 1), 1)
 
 
 @dataclass

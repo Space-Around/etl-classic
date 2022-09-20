@@ -1,10 +1,10 @@
 # SQLITE_PATH = 'sqlite://///opt/rpams/db/website.db?check_same_thread=False'
 
-SQLITE_PATH = 'sqlite://///home/user/Desktop/sandbox/reef-etl-main/rpams/db/website.db?check_same_thread=False'
+SQLITE_PATH = 'sqlite://///home/maxwellviksna/etl-classic/rpams/db/website.db?check_same_thread=False'
 
 # PROXY_JSON_PATH = '/opt/rpams/cfg/external-proxy.json'
 
-PROXY_JSON_PATH = '/home/user/Desktop/sandbox/reef-etl-main/rpams/cfg/external-proxy.json'
+PROXY_JSON_PATH = '/home/maxwellviksna/etl-classic/rpams/cfg/external-proxy.json'
 
 DYNAMIC_PROXY_IP = 'airflow-webserver'
 DYNAMIC_PROXY_SCHEME = 'http'

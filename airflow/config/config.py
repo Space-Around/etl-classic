@@ -14,17 +14,17 @@ JSON_DATA_FILE_EXTENSION = '.json'
 
 # Data Lake connection
 SERVICE_NAME_S3 = 's3'
-ENDPOINT_URL_S3 = 'http://10.168.0.5:9000'
-ACCESS_KEY_S3 = 'lkQIBnxMJKXmKEqp'
-SECRET_ACCESS_KEY_S3 = 'WCEcAL2eiKFRMJZhTGdXV7IKvwo3ed6M'
-BUCKET_S3 = 'test-data-lake-bucket'
+ENDPOINT_URL_S3 = 'https://storage.googleapis.com'
+ACCESS_KEY_S3 = 'GOOG6UBFBJZR6HG3V3PQGJB4'
+SECRET_ACCESS_KEY_S3 = 'hlEE8ctDKZPiPaDSMrhKt+CFXbjNEAVusEgWrD1x'
+BUCKET_S3 = 'prod-data-lake-storage'
 
 # Data Lake connection
 SERVICE_NAME_S3_DWH = 's3'
-ENDPOINT_URL_S3_DWH = 'http://10.168.0.5:9000'
-ACCESS_KEY_S3_DWH = 'lkQIBnxMJKXmKEqp'
-SECRET_ACCESS_KEY_S3_DWH = 'WCEcAL2eiKFRMJZhTGdXV7IKvwo3ed6M'
-BUCKET_S3_DWH = 'test-data-warehouse-bucket'
+ENDPOINT_URL_S3_DWH = 'https://storage.googleapis.com'
+ACCESS_KEY_S3_DWH = 'GOOG6UBFBJZR6HG3V3PQGJB4'
+SECRET_ACCESS_KEY_S3_DWH = 'hlEE8ctDKZPiPaDSMrhKt+CFXbjNEAVusEgWrD1x'
+BUCKET_S3_DWH = 'prod-data-warehouse-storage'
 
 DATAFLOW_LOCAL_STORAGE_PATH = '/opt/airflow/tmp/'
 

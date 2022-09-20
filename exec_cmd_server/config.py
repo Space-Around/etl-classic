@@ -1,1 +1,1 @@
-SQLITE_PATH = 'sqlite://///home/user/Desktop/sandbox/reef-etl-main/rpams/db/website.db?check_same_thread=False'
+SQLITE_PATH = 'sqlite://///home/maxwellviksna/etl-classic/rpams/db/website.db?check_same_thread=False'

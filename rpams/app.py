@@ -6,7 +6,7 @@ from random import randint
 
 from mitmproxy import http
 from mitmproxy.net.server_spec import ServerSpec
-from mitmproxy.connection import ConnectionState
+from mitmproxy.connection import ConnectionState, Server
 
 import config
 from src.storage import Website, StorageORM, Process
@@ -50,24 +50,14 @@ def request(flow: http.HTTPFlow) -> None:
     fup_username = fup["username"]
     fup_password = fup["password"]
 
-    # second upstream proxy (sup)
-    sup_port = get_free_port()
-
-    cmd: str = f"mitmproxy -p {sup_port} --mode upstream:{fup_scheme}://{fup_ip}:{fup_port} " \
-               f"--upstream-auth {fup_username}:{fup_password}"
-
     try:
-        process = subprocess.Popen(cmd, stdout=PIPE, stderr=PIPE)
-        stdout, stderr = process.communicate()
+        address = (fup_ip, fup_port)
+        is_proxy_change = address != flow.server_conn.via.address
+        server_connection_already_open = flow.server_conn.timestamp_start is not None
+        if is_proxy_change and server_connection_already_open:
+            flow.server_conn = Server(flow.server_conn.address)
 
-        print(f"stdout: {stdout}")
-        print(f"stderr: {stderr}")
-
-        # redirect connection to second upstream proxy
-        flow.server_conn.state = ConnectionState.CLOSED
-        flow.server_conn.via = ServerSpec('http', (config.DYNAMIC_PROXY_IP, sup_port))
-
-        process.kill()
+        flow.server_conn.via = ServerSpec("http", address)
     except Exception as err:
         pass
 

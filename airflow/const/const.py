@@ -48,14 +48,14 @@ with DAG(
     SETUP_PROJECT = BashOperator(
         task_id='setup',
         depends_on_past=False,
-        bash_command='''curl --header "Content-Type: application/json" --header "scrubber-name: %s" --request POST --data '{"command":"pip install -r /home/user/Desktop/sandbox/reef-etl-main/airflow/scrubbers/%s/requirements.txt"}' http://host.docker.internal:8082/exec''',
+        bash_command='''curl --header "Content-Type: application/json" --header "scrubber-name: %s" --request POST --data '{"command":"python3.10 -m pip install -r /home/maxwellviksna/etl-classic/airflow/scrubbers/%s/requirements.txt"}' http://host.docker.internal:8082/exec''',
     )
     
     RUN_PROJECT = BashOperator(
         task_id='run',
         depends_on_past=False,
         trigger_rule='all_done',
-        bash_command='''curl --header "Content-Type: application/json" --header "scrubber-name: %s" --request POST --data '{"command":"python3 /home/user/Desktop/sandbox/reef-etl-main/airflow/scrubbers/%s/main.py"}' http://host.docker.internal:8082/exec''',
+        bash_command='''curl --header "Content-Type: application/json" --header "scrubber-name: %s" --request POST --data '{"command":"python3.10 /home/maxwellviksna/etl-classic/airflow/scrubbers/%s/main.py"}' http://host.docker.internal:8082/exec''',
     )
 
     SETUP_PROJECT >> RUN_PROJECT
